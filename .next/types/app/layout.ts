@@ -1,4 +1,4 @@
-// File: C:\Cyces 888\Cashflow\app\layout.jsx
+// File: C:\Cyces 888\Cash Flow\app\layout.jsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
