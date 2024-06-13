@@ -1,27 +1,41 @@
 import React from "react";
+import { useAppContext } from "../utils/AppContext";
+import SkeletonLoader from "../UI Elements/SkeletonLoader";
 
 export default function IO() {
+  const { totalIncome, totalExpenses, netWorth } = useAppContext();
+
   const data = [
     {
       Title: "Income",
-      Value: "$1203",
+      Value: totalIncome,
     },
     {
       Title: "Spent",
-      Value: "$3203",
+      Value: totalExpenses,
     },
   ];
 
   const renderTemplate = data.map((item, index) => (
-    <div className="flex flex-col gap-1 justify-center  px-2 py-4 w-full items-center text-center">
-      <h2 >{item.Title}</h2>
-      <h2 className="font-bold text-[25px] ">{item.Value}</h2>
+    <div key={index} className="flex flex-col gap-1 justify-center w-full px-2 py-4 items-center text-center">
+      <h2>{item.Title}</h2>
+      <h2 className="font-bold w-full text-[25px]">
+        {item.Value !== null ? `₹ ${item.Value}` : <SkeletonLoader />}
+      </h2>
     </div>
   ));
 
   return (
-    <div className="flex justify-between w-full glass  items-center mx-auto gap-4 p-4 mt-[100px]">
-      {renderTemplate}
+    <div className="flex justify-between flex-col glass w-[300px] items-center mx-auto gap-4 p-4 mt-[100px]">
+      <div className="flex justify-center items-center w-full">
+        {renderTemplate}
+      </div>
+      <div className="w-full flex-col px-2 justify-center items-center flex">
+        <h2>Net Worth</h2>
+        <h2 className="font-bold w-full text-center text-[25px]">
+          {netWorth !== null ? `₹ ${netWorth}` : <SkeletonLoader />}
+        </h2>
+      </div>
     </div>
   );
 }

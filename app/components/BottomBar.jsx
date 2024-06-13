@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../UI Elements/icon";
+import Icon from "../UI Elements/Icon";
 import { IoHome } from "react-icons/io5";
 import { BiTransferAlt } from "react-icons/bi";
 import { IoWalletOutline } from "react-icons/io5";
@@ -37,7 +37,7 @@ export default function BottomBar() {
     setShowAddTrans(!showAddTrans);
   }
   return (
-    <div className="cursor-pointer relative py-2 flex justify-between  items-center  w-full ">
+    <div className="cursor-pointer px-[15px] relative py-2 flex justify-between  items-center  w-full ">
       {renderIcons}
       <div className="absolute left-[50%] bg-white p-2 -translate-x-[50%] rounded-full  -top-[30px]">
         {showAddTrans ? (

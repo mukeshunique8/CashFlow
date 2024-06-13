@@ -1,12 +1,15 @@
-// import { useAppContext } from "../utils/AppContext";
-
-
-// // Define your function to handle adding transactions
-// export const handleAddTrans = (showAddTrans,setShowAddTrans) => {
+// Function to calculate total income and total expenses
+export function calculateIncomeAndExpenses(transactions) {
+    let totalIncome = 0;
+    let totalExpenses = 0;
    
-//     console.log("cli");
-//     console.log(showAddTrans);
-//     setShowAddTrans(!showAddTrans);
-// };
-
-// // Define other functions as needed
+    transactions.forEach(transaction => {
+      if (transaction.flow === "Income") {
+        totalIncome += parseFloat(transaction.amount);
+      } else if (transaction.flow === "Expense") {
+        totalExpenses += parseFloat(transaction.amount);
+      }
+    });
+  
+    return { totalIncome, totalExpenses };
+  }
