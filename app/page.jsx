@@ -9,20 +9,18 @@ import Login from "./components/Login";
 import Btn from "./UI Elements/Btn";
 
 export default function Page() {
-  const { showAddTrans, setShowAddTrans,setIsLogIn } = useAppContext();
+  const { showAddTrans, setShowAddTrans, setIsLogIn } = useAppContext();
   const { transactions, setTransactions } = useAppContext();
 
-  
-  useEffect(()=>{
-    const storedTrans = JSON.parse( localStorage.getItem("TransactionsList"))
-    if (storedTrans) {
-      setTransactions(storedTrans);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedTrans = JSON.parse(localStorage.getItem("TransactionsList"));
+      if (storedTrans) {
+        setTransactions(storedTrans);
+      }
     }
-  },[])
+  }, []);
 
- 
-
-  
   return (
     <div className="flex max-w-[380px]  flex-col  justify-start items-center ">
       {/* <Login/> */}

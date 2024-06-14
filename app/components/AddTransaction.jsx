@@ -21,11 +21,13 @@ export default function AddTransaction() {
   const [flowType, setFlowType] = useState("Income");
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
     const currentTransactions = JSON.parse(
       localStorage.getItem("TransactionsList") || "[]"
     );
     setTransactions(currentTransactions);
-  }, []);
+  }
+  }, [transactions]);
 
   // console.log(transactions);
 

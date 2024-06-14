@@ -3,7 +3,7 @@ node_modules/
 
 # Ignore .env files
 .env
-
+.env.local
 # Ignore build artifacts
 build/
 dist/
