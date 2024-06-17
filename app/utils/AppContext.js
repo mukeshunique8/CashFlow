@@ -11,7 +11,11 @@ export const AppProvider = ({ children }) => {
   const [totalIncome, setTotalIncome] = useState(null);
   const [totalExpenses, setTotalExpenses] = useState(null);
   const [netWorth, setNetWorth] = useState(null);
+  const [auth,setAuth] =useState(false)
+  const [isGuest,setIsGuest] =useState(false)
+  const [isSignUp,setIsSignUp] =useState(false)
   const [isLogIn,setIsLogIn] =useState(false)
+  const [currentUser, setCurrentUser ] =useState({name:"Guest",id:"007"})
 
   useEffect(() => {
     const { totalIncome, totalExpenses } = calculateIncomeAndExpenses(transactions);
@@ -29,7 +33,7 @@ export const AppProvider = ({ children }) => {
 
       const response = await getDocs(userRef)
 
-      console.log(response.docs.map((doc)=>({...doc.data(),id:doc.id})));
+      // console.log(response.docs.map((doc)=>({...doc.data(),id:doc.id})));
 
 
     }
@@ -45,7 +49,12 @@ export const AppProvider = ({ children }) => {
       totalIncome,
       totalExpenses,
       netWorth,
-      isLogIn,setIsLogIn
+      auth,setAuth,
+      isGuest,setIsGuest,
+      isSignUp,setIsSignUp,
+      isLogIn,setIsLogIn,
+      currentUser, setCurrentUser
+
     }}>
       {children}
     </AppContext.Provider>

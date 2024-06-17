@@ -5,16 +5,18 @@ import Navbar from "./components/Navbar";
 import BottomBar from "./components/BottomBar";
 import { AppProvider, useAppContext } from "./utils/AppContext";
 import { ChakraProvider } from "@chakra-ui/react";
-import Login from "./components/Login";
+
+import Auth from "./components/auth/Auth";
 
 const roboto_serif = Roboto_Serif({ subsets: ["latin"] });
 
 function AppContent({children}) {
-  const { isLogIn } = useAppContext();
+  const { isLogIn,isSignUp,auth,setAuth} = useAppContext();
 
-  if (!isLogIn) {
-    return <Login/>;
-  }
+  if (!auth) {
+    return <Auth/>;
+  } 
+  
 
   return (
     <div className="max-w-[400px] h-screen relative w-full px-[15px] rounded-lg bg-white flex flex-col justify-start items-center">
