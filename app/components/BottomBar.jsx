@@ -37,13 +37,13 @@ export default function BottomBar() {
     setShowAddTrans(!showAddTrans);
   }
   return (
-    <div className="cursor-pointer px-[15px] relative py-2 flex justify-between  items-center  w-full ">
+    <div className={`${showAddTrans?" bg-sec text-tri ":" bg-pri "}  cursor-pointer px-[15px] py-2 flex justify-between items-center w-full `}>
       {renderIcons}
-      <div className="absolute left-[50%] bg-white p-2 -translate-x-[50%] rounded-full  -top-[30px]">
+      <div className={`absolute left-[50%] p-1 -translate-x-[50%] rounded-full  -top-[15px] ${showAddTrans?"bg-tri":"bg-sec"}`}>
         {showAddTrans ? (
-          <FaChevronDown onClick={handleAddTrans} size={40} />
+          <FaChevronDown color="#111" onClick={handleAddTrans} size={30} />
         ) : (
-          <IoMdAdd onClick={handleAddTrans} size={40} />
+          <IoMdAdd color="white" onClick={handleAddTrans} size={30} />
         )}
       </div>
     </div>

@@ -50,8 +50,8 @@ backdrop-filter: blur(1.3px);
   .glass3{
     /* From https://css.glass */
 
-border-radius: 16px;
+border-radius: 10px;
 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-border: 1px solid rgba(255, 255, 255, 1);
+border: 0.5px solid rgba(255, 255, 255, 1);
   }

@@ -19,12 +19,12 @@ function AppContent({children}) {
   
 
   return (
-    <div className="max-w-[400px] h-screen relative w-full px-[15px] rounded-lg bg-white flex flex-col justify-start items-center">
-      <div className="w-full max-w-[400px] z-50 bg-white fixed top-0">
+    <div className="max-w-[400px] h-screen relative w-full  rounded-lg  flex flex-col justify-start items-center">
+      <div className="w-full max-w-[400px] z-50   fixed top-0">
         <Navbar />
       </div>
       {children}
-      <div className="w-full max-w-[400px] bg-white z-50 px-[15px] fixed bottom-0">
+      <div className="w-full max-w-[400px]  z-50 fixed bottom-0">
         <BottomBar />
       </div>
     </div>
@@ -34,7 +34,7 @@ function AppContent({children}) {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto_serif.className} mx-auto flex flex-col justify-center items-center`}>
+      <body className={`${roboto_serif.className} mx-auto flex flex-col bg-sec  justify-center items-center`}>
         <ChakraProvider>
           <AppProvider>
             <AppContent>

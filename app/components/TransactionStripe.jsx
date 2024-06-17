@@ -8,7 +8,7 @@ export default function TransactionStripe({item}) {
   const [istDate, istTime] = dateTimeString.split(', ');
   // console.log(dateTimeString);
   return (
-    <div className="w-full flex glass3 px-4 py-2 justify-between items-center">
+    <div className="w-full flex glass2 text-sec px-4 py-2 justify-between items-center">
       <div className="flex w-[60%] justify-start items-center gap-[20px]">
       <div className=" flex justify-center">
         <RiMoneyRupeeCircleFill size={30} />

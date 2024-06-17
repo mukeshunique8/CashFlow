@@ -39,10 +39,10 @@ export default function Recent() {
   return (
     <div className="flex overflow-scroll no-scrollbar justify-center w-[300px] gap-[20px] items-center flex-col">
       <div className="flex w-full  justify-around  items-center">
-        <h2 className="font-medium text-nowrap w-full text-[16px]">Recent Transactions</h2>
+        <h2 className="font-semibold  text-nowrap w-full text-[16px]">Recent Transactions</h2>
 
         {transactions?.length >3  &&
-        <p onClick={handleSeeAll} className={`p-2 w-full text-end cursor-pointer ${seeAll?"text-red-600":"text-blue-600"}`}>
+        <p onClick={handleSeeAll} className={` w-[80%] p-[4px] text-end cursor-pointer ${seeAll?" text-sec":" text-tri"}`}>
           {seeAll? "Show Fewer" : "See All"}
         </p>
         }

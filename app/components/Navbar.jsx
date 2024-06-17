@@ -4,7 +4,7 @@ import { IoIosNotifications } from "react-icons/io";
 import { useAppContext } from "../utils/AppContext";
 
 export default function Navbar() {
-  const {setAuth,isSignUp, setIsSignUp, isLogIn, setIsLogIn, currentUser, setCurrentUser } = useAppContext();
+  const {showAddTrans,setAuth,isSignUp, setIsSignUp, isLogIn, setIsLogIn, currentUser, setCurrentUser } = useAppContext();
   function handleLogout(){
     setAuth(false)
     setIsSignUp(false)
@@ -14,7 +14,7 @@ export default function Navbar() {
 
 
   return (
-    <div className=" cursor-pointer px-[15px] py-2 flex justify-between items-center   w-full ">
+    <div className={`${showAddTrans?" bg-sec text-tri ":" bg-pri "} cursor-pointer px-[15px] py-2 flex justify-between items-center w-full `}>
       <IoIosMenu onClick={handleLogout} size={30} />
       <div>
         <h2 className="font-extrabold text-[25px]">

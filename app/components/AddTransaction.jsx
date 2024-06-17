@@ -36,8 +36,8 @@ export default function AddTransaction() {
   const renderFlowType = flowTypes.map((item, index) => (
     <div
       key={index}
-      className={`p-2 w-fit rounded-md bg-white cursor-pointer ${
-        flowType === item ? "bg-green-300" : ""
+      className={`p-2 w-fit rounded-md  cursor-pointer ${
+        flowType === item ? "bg-tri text-sec" : ""
       }`}
       onClick={() => setFlowType(item)}
     >
@@ -48,8 +48,8 @@ export default function AddTransaction() {
   const renderPaymentType = paymentTypes.map((item, index) => (
     <div
       key={index}
-      className={`p-2 w-fit rounded-md bg-white cursor-pointer ${
-        paymentType === item ? "bg-cyan-300" : ""
+      className={`p-2 w-fit rounded-md  cursor-pointer ${
+        paymentType === item ? "bg-tri text-sec" : ""
       }`}
       onClick={() => setPaymentType(item)}
     >
@@ -59,8 +59,9 @@ export default function AddTransaction() {
 
   const renderIncomeCategory = (
     <Select
+    color= "#000"
       variant="unstyled"
-      className="w-[70%] p-2 rounded-lg"
+      className="w-[70%]  text-pri rounded-sm"
       onChange={(e) => setCategory(e.target.value)}
       value={category}
     >
@@ -73,7 +74,9 @@ export default function AddTransaction() {
 
   const renderExpenseCategory = (
     <Select
-      className="w-[70%] p-2 rounded-lg"
+    color= "#000"
+        variant="unstyled"
+      className="w-[70%]  text-pri rounded-sm"
       onChange={(e) => setCategory(e.target.value)}
       value={category}
     >
@@ -128,18 +131,18 @@ export default function AddTransaction() {
   }
 
   return (
-    <div className="w-full bg-gray-200 rounded-t-3xl h-sm-75 z-50 flex flex-col justify-start py-3 items-center gap-[10px]">
+    <div className="w-full  max-w-[380px] bg-sec text-tri rounded-t-3xl h-sm-75 z-50 flex flex-col justify-start p-3 items-center gap-[10px]">
       <div className="flex justify-center font-bold w-full text-[20px] items-center text-center p-2">
-        <h2>Add transaction</h2>
+        <h2 className="text-pri">Add transaction</h2>
       </div>
       <div className="flex flex-col w-full gap-[10px] px-4 items-start justify-start">
-        <div className="flex gap-5 flex-col glass2 items-center justify-center w-full p-4">
+        <div className="flex gap-5 flex-col items-center justify-center w-full p-4">
           <div className="flex  w-full justify-between items-center">
-            <p className="font-semibold  text-[18px]">Flow</p>
+            <p className="font-semibold text-pri text-[18px]">Flow</p>
             <div className="flex justify-center items-center">{renderFlowType}</div>
           </div>
           <div className="w-full flex  justify-between items-center">
-            <p className="font-semibold  text-[18px]">Amount</p>
+            <p className="font-semibold text-pri text-[18px]">Amount</p>
             <div className="w-[50%]">
               <NumberInput
                 size="lg"
@@ -153,13 +156,13 @@ export default function AddTransaction() {
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper
-                    bg="green.200"
-                    _active={{ bg: "green.300" }}
+                    bg="#00b397"
+                    _active={{ bg: "#00b397" }}
                     children="+"
                   />
                   <NumberDecrementStepper
-                    bg="pink.200"
-                    _active={{ bg: "pink.200" }}
+                    bg="#d3d3d3"
+                    _active={{ bg: "#d3d3d3" }}
                     children="-"
                   />
                 </NumberInputStepper>
@@ -167,25 +170,25 @@ export default function AddTransaction() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col glass2 items-start w-full gap-2 justify-center p-4">
+        <div className="flex flex-col glass2 items-start w-full gap-2 justify-center px-4 py-2">
           {flowType === "Income" ? renderIncomeCategory : renderExpenseCategory}
         </div>
-        <div className="flex flex-col items-start gap-4 justify-center p-4">
-          <p className="font-semibold text-[18px]">Payment Type</p>
+        <div className="flex flex-col  w-full items-start gap-4 justify-center p-4">
+          <p className="font-semibold text-pri text-[18px]">Payment Type</p>
           <div className="flex justify-start items-start gap-3">{renderPaymentType}</div>
         </div>
       </div>
 
-      <div className="flex justify-between gap-[20px] items-center w-full px-3">
+      <div className="flex justify-between gap-[20px] items-center w-full  p-4">
         <Btn
           onClick={cancelTrans}
           name="Cancel"
-          style="bg-red-500 text-white font-medium"
+          style=" text-white font-medium"
         />
         <Btn
           onClick={addTrans}
           name="Add"
-          style="bg-blue-500 text-white font-medium"
+          style="bg-pri text-tri font-medium"
         />
       </div>
     </div>

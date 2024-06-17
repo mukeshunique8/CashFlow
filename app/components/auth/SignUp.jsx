@@ -10,7 +10,18 @@ export default function SignUp() {
   // Chakra
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-  const {auth,setAuth,isGuest,setIsGuest,isSignUp, setIsSignUp, isLogIn, setIsLogIn, currentUser, setCurrentUser } = useAppContext();
+  const {
+    auth,
+    setAuth,
+    isGuest,
+    setIsGuest,
+    isSignUp,
+    setIsSignUp,
+    isLogIn,
+    setIsLogIn,
+    currentUser,
+    setCurrentUser,
+  } = useAppContext();
   // Chakra
 
   const userCollectionRef = collection(db, "users");
@@ -63,20 +74,18 @@ export default function SignUp() {
     setNewName("");
     setNewPassword("");
     await validateUser();
-    setIsSignUp(true)
-    
+    setIsSignUp(true);
   };
 
-  function handlGuest(){
-    setIsSignUp(true)
-    setIsLogIn(true)
-    setAuth(true)
-    setIsGuest(true)
-
+  function handlGuest() {
+    setIsSignUp(true);
+    setIsLogIn(true);
+    setAuth(true);
+    setIsGuest(true);
   }
 
   return (
-    <div className="max-w-[400px] h-fit gap-[20px] glass relative w-full p-[35px] rounded-lg bg-white flex flex-col justify-start items-center">
+    <div className="max-w-[400px] h-fit gap-[20px]  text-tri bg-gradient-to-br from-pri from-10% to-sec to-50% relative w-full p-[35px] rounded-lg flex flex-col justify-start items-center">
       <div className="relative w-[100px] h-[100px]">
         <Image
           className="cursor-pointer"
@@ -89,13 +98,14 @@ export default function SignUp() {
 
       {/* <h3 className="text-[20px] font-semibold">SignUp</h3> */}
 
-      <div className="flex flex-col gap-[10px] w-full justify-center items-start">
+      <div className="flex flex-col gap-[10px]  text-tri w-full justify-center items-start">
         <label htmlFor="User Name">User Name</label>
         <Input
           onChange={(e) => {
             setNewName(e.target.value);
           }}
           placeholder="User Name"
+          className=" text-tri"
         />
       </div>
       <div className="flex flex-col gap-[10px] w-full justify-center items-start">
@@ -117,16 +127,26 @@ export default function SignUp() {
           </InputRightElement>
         </InputGroup>
       </div>
-      <div className="flex w-[100%] justify-between gap-[20px] items-center">
-        <h3 onClick={()=>{setIsSignUp(true)}} className="w-[50%] cursor-pointer underline underline-offset-4 justify-center items-center">Already User?</h3>
-        <div className="w-[50%] cursor-pointer">
-
-        <Btn  onClick={handleLogin} name="SignUp" style="bg-red-200" />
+      <div className="flex flex-col w-[100%] justify-between gap-[20px] items-center">
+        <div className="cursor-pointer w-[90%]">
+          <Btn
+            onClick={handleLogin}
+            name="SignUp"
+            style=" bg-pri text-tri font-medium"
+          />
         </div>
+        <h3
+          onClick={() => {
+            setIsSignUp(false);
+          }}
+          className=" cursor-pointer underline underline-offset-4 justify-center items-center"
+        >
+          Already User?
+        </h3>
       </div>
 
       <div className="cursor-pointer pt-[20px]" onClick={handlGuest}>
-        <Btn style="bg-orange-400" name="Login as Guest"/>
+        <Btn style="underline text-pri font-medium italic" name="Login as Guest" />
       </div>
     </div>
   );

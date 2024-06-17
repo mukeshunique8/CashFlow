@@ -1,11 +1,11 @@
 "use client";
-import React, { useContext, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Draggable from "react-draggable";
 import IO from "./components/IO";
 import Recent from "./components/Recent";
 import { useAppContext } from "./utils/AppContext";
 import AddTransaction from "./components/AddTransaction";
-
 import Btn from "./UI Elements/Btn";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./utils/firebase-config";
@@ -14,10 +14,7 @@ export default function Page() {
   const {
     showAddTrans,
     setShowAddTrans,
-    setIsLogIn,
     currentUser,
-    setCurrentUser,
-    transactions,
     setTransactions,
   } = useAppContext();
 
@@ -47,20 +44,38 @@ export default function Page() {
     }
   }, [currentUser]);
 
+  // Define animation variants
+  const variants = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+    exit: { y: "100%", opacity: 0 },
+  };
+
   return (
-    <div className="flex max-w-[380px]  flex-col  justify-start items-center ">
+    <div className="flex max-w-[400px] w-full text-tri bg-pri flex-col justify-start items-center">
       {!showAddTrans && (
-        <div className="flex gap-[40px]  flex-col">
+        <div className="flex gap-[40px] flex-col">
           <IO />
           <Recent />
         </div>
       )}
 
-      {showAddTrans && (
-        <div className="w-full absolute bottom-0">
-          <AddTransaction />
-        </div>
-      )}
+      <AnimatePresence>
+        {showAddTrans && (
+          <motion.div
+            className="w-full bg-sec absolute bottom-0"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={variants}
+            transition={{ duration: 0.5 }}
+          >
+            <AddTransaction />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+    
     </div>
   );
 }

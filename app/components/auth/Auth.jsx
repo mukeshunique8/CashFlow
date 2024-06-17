@@ -12,10 +12,10 @@ export default function Auth() {
   const { auth, setAuth,isGuest,setIsGuest, isSignUp, setIsSignUp, isLogIn, setIsLogIn } = useAppContext();
 
   return (
-    <div className="max-w-[400px] h-screen relative w-full px-[15px] rounded-lg bg-white flex flex-col justify-center items-center">
+    <div className="max-w-[400px] h-screen relative w-full  rounded-lg bg-sec flex flex-col justify-center items-center">
 
 
-      {!isSignUp ? <SignUp/> : <Login/> }
+      {isSignUp ? <SignUp/> : <Login/> }
 
 
     </div>
